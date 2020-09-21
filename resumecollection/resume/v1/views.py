@@ -12,15 +12,13 @@ from rest_framework.viewsets import ModelViewSet
 from resumecollection.mixins import StandardResultsSetPagination
 from resumecollection.resume.models import CandidateProfile
 from resumecollection.resume.v1.filters import ProfileFilter, search_filters_list
-from resumecollection.resume.v1.serializers import (
-    CandidateProfileSerializer,
-    CandidateProfileDetailSerializer,
-)
+from resumecollection.resume.v1.serializers import CandidateProfileSerializer
 
 logger = logging.getLogger(__name__)
 
 
 class CandidateProfileView(ModelViewSet):
+    queryset = CandidateProfile.objects.all()
     filter_backends = (
         django_filters.rest_framework.DjangoFilterBackend,
         OrderingFilter,
@@ -30,10 +28,10 @@ class CandidateProfileView(ModelViewSet):
     pagination_class = StandardResultsSetPagination
     search_fields = search_filters_list
 
-    def get_serializer_class(self):
-        if self.action == "list":
-            return CandidateProfileSerializer
-        return CandidateProfileDetailSerializer
+    serializer_class = CandidateProfileSerializer
+
+    permission_classes = ()
+    authentication_classes = ()
 
     @action(detail=False)
     def get_candidate_chain_references(self, request, **kwargs):
@@ -42,8 +40,12 @@ class CandidateProfileView(ModelViewSet):
             if candidate_id:
                 candidate_object = get_object_or_404(CandidateProfile, id=candidate_id)
                 reference_chain = candidate_object.get_reference_chain()
-                reference_chain_serializer = CandidateProfileDetailSerializer(instance=reference_chain, many=True)
-                return Response(data=reference_chain_serializer.data, status=status.HTTP_200_OK)
+                reference_chain_serializer = CandidateProfileSerializer(
+                    instance=reference_chain, many=True
+                )
+                return Response(
+                    data=reference_chain_serializer.data, status=status.HTTP_200_OK
+                )
             raise Exception("Candidate id not found")
         except Http404:
             return Response(
@@ -51,7 +53,4 @@ class CandidateProfileView(ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST,
             )
         except Exception as err:
-            return Response(
-                data=str(err),
-                status=status.HTTP_400_BAD_REQUEST,
-            )
+            return Response(data=str(err), status=status.HTTP_400_BAD_REQUEST,)

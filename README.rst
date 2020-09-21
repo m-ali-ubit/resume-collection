@@ -36,6 +36,14 @@ Setting Up Your Users
 
     $ make superuser
 
+
+Postman API docs
+^^^^^^^^^^^^^^^^
+
+You can find Postman API docs for using the APIs at the following path
+
+    /resumecollection/docs/api_docs/Resume Collection.postman_collection.json
+
 Type checks
 ^^^^^^^^^^^
 

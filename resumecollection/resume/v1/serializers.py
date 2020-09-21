@@ -1,31 +1,39 @@
 from rest_framework import serializers
 
-from resumecollection.resume.models import CandidateProfile, Education, Experience
+from resumecollection.resume.models import (
+    CandidateProfile,
+    Education,
+    Experience,
+    ContactDetail,
+)
 from resumecollection.tag_serializer import TagListSerializerField
 
 
-class CandidateProfileDetailSerializer(serializers.ModelSerializer):
-    skills = TagListSerializerField(required=False)
-    generals = TagListSerializerField(required=False)
-    education = serializers.PrimaryKeyRelatedField(
-        required=False, queryset=Education.objects.all()
-    )
-    experience = serializers.PrimaryKeyRelatedField(
-        required=False, queryset=Experience.objects.all()
-    )
-
+class ContactDetailModelSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CandidateProfile
+        model = ContactDetail
+        fields = "__all__"
+
+
+class EducationModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Education
+        fields = "__all__"
+
+
+class ExperienceModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Experience
         fields = "__all__"
 
 
 class CandidateProfileSerializer(serializers.ModelSerializer):
+    skills = TagListSerializerField(required=False)
+    generals = TagListSerializerField(required=False)
+    education = EducationModelSerializer(required=False)
+    experience = ExperienceModelSerializer(required=False)
+    contact_detail = ContactDetailModelSerializer()
+
     class Meta:
         model = CandidateProfile
-        fields = (
-            "id",
-            "first_name",
-            "last_name",
-            "contact_detail",
-            "added_by",
-        )
+        fields = "__all__"
