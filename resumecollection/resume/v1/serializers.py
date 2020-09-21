@@ -8,23 +8,27 @@ from resumecollection.resume.models import (
 )
 from resumecollection.tag_serializer import TagListSerializerField
 
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 
 class ContactDetailModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactDetail
-        fields = "__all__"
+        exclude = ("created_at", "last_updated_at")
 
 
 class EducationModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Education
-        fields = "__all__"
+        exclude = ("created_at", "last_updated_at")
 
 
 class ExperienceModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experience
-        fields = "__all__"
+        exclude = ("created_at", "last_updated_at")
 
 
 class CandidateProfileSerializer(serializers.ModelSerializer):
@@ -36,4 +40,16 @@ class CandidateProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CandidateProfile
-        fields = "__all__"
+        exclude = ("created_at", "last_updated_at")
+
+
+class CandidateReferenceChainSerializer(serializers.ModelSerializer):
+    candidate_name = serializers.SerializerMethodField()
+
+    @staticmethod
+    def get_candidate_name(args):
+        return f"{args.first_name} {args.last_name}"
+
+    class Meta:
+        model = CandidateProfile
+        fields = ("id", "candidate_name")

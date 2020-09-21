@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "01455cc0-4dff-45a6-8bba-52b066623df4",
+		"name": "Resume Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get candidates chain references",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json; charset=utf-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:80.0) Gecko/20100101 Firefox/80.0",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6Im1hbGlAc2FzdGF0aWNrZXQucGsiLCJ1c2VybmFtZSI6Im1hbGlAc2FzdGF0aWNrZXQucGsiLCJleHAiOjE1OTk3MDMxNTksIm9yaWdfaWF0IjoxNTk5NjU5OTU5fQ.cY2QmxiJBCOcRl_HdapLYplkyEovmt7t9npVQQfoTIc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "hash-code",
+						"value": "710b334ed1536e1b1303973ad59ee3fdb493a22a55610ddb4a7ba900ff0bb304",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/resume/1/get_candidate_chain_references/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"resume",
+						"1",
+						"get_candidate_chain_references",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Candidates Profiles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json; charset=utf-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:80.0) Gecko/20100101 Firefox/80.0",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6Im1hbGlAc2FzdGF0aWNrZXQucGsiLCJ1c2VybmFtZSI6Im1hbGlAc2FzdGF0aWNrZXQucGsiLCJleHAiOjE1OTk3MDMxNTksIm9yaWdfaWF0IjoxNTk5NjU5OTU5fQ.cY2QmxiJBCOcRl_HdapLYplkyEovmt7t9npVQQfoTIc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "hash-code",
+						"value": "710b334ed1536e1b1303973ad59ee3fdb493a22a55610ddb4a7ba900ff0bb304",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/resume/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"resume",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Candidates Profile by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json; charset=utf-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:80.0) Gecko/20100101 Firefox/80.0",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6Im1hbGlAc2FzdGF0aWNrZXQucGsiLCJ1c2VybmFtZSI6Im1hbGlAc2FzdGF0aWNrZXQucGsiLCJleHAiOjE1OTk3MDMxNTksIm9yaWdfaWF0IjoxNTk5NjU5OTU5fQ.cY2QmxiJBCOcRl_HdapLYplkyEovmt7t9npVQQfoTIc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "hash-code",
+						"value": "710b334ed1536e1b1303973ad59ee3fdb493a22a55610ddb4a7ba900ff0bb304",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/resume/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"resume",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Candidate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json; charset=utf-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:80.0) Gecko/20100101 Firefox/80.0",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6Im1hbGlAc2FzdGF0aWNrZXQucGsiLCJ1c2VybmFtZSI6Im1hbGlAc2FzdGF0aWNrZXQucGsiLCJleHAiOjE1OTk3MDMxNTksIm9yaWdfaWF0IjoxNTk5NjU5OTU5fQ.cY2QmxiJBCOcRl_HdapLYplkyEovmt7t9npVQQfoTIc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "hash-code",
+						"value": "710b334ed1536e1b1303973ad59ee3fdb493a22a55610ddb4a7ba900ff0bb304",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"skills\": [\n        \"Python\",\n        \"Django\"\n    ],\n    \"generals\": [\n        \"Critical Thinker\",\n        \"Social\"\n    ],\n    \"contact_detail\": {\n        \"phone_number\": \"+923361234567\",\n        \"email\": \"johndoe@gmail.com\",\n        \"address\": \"Karachi\"\n    },\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"resume\": \"http://localhost:8000/media/resume/JohnDoe.pdf\",\n    \"added_by\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/resume/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"resume",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

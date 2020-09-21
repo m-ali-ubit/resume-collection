@@ -12,7 +12,7 @@ from rest_framework.viewsets import ModelViewSet
 from resumecollection.mixins import StandardResultsSetPagination
 from resumecollection.resume.models import CandidateProfile
 from resumecollection.resume.v1.filters import ProfileFilter, search_filters_list
-from resumecollection.resume.v1.serializers import CandidateProfileSerializer
+from resumecollection.resume.v1.serializers import CandidateProfileSerializer, CandidateReferenceChainSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -30,9 +30,6 @@ class CandidateProfileView(ModelViewSet):
 
     serializer_class = CandidateProfileSerializer
 
-    permission_classes = ()
-    authentication_classes = ()
-
     @action(detail=False)
     def get_candidate_chain_references(self, request, **kwargs):
         try:
@@ -40,7 +37,7 @@ class CandidateProfileView(ModelViewSet):
             if candidate_id:
                 candidate_object = get_object_or_404(CandidateProfile, id=candidate_id)
                 reference_chain = candidate_object.get_reference_chain()
-                reference_chain_serializer = CandidateProfileSerializer(
+                reference_chain_serializer = CandidateReferenceChainSerializer(
                     instance=reference_chain, many=True
                 )
                 return Response(
