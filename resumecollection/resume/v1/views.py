@@ -35,9 +35,6 @@ class CandidateProfileView(ModelViewSet):
             return CandidateProfileSerializer
         return CandidateProfileDetailSerializer
 
-    permission_classes = ()
-    authentication_classes = ()
-
     @action(detail=False)
     def get_candidate_chain_references(self, request, **kwargs):
         try:
